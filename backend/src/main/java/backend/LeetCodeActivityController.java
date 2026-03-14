@@ -20,15 +20,19 @@ public class LeetCodeActivityController {
   }
 
   @PostMapping("/event")
-public LeetCodeActivity log(@RequestBody LeetCodeActivity activity) {
-  if (activity.getEventTime() != null &&
-      repo.existsByEventTypeAndProblemNameAndEventTime(
-        activity.getEventType(),
-        activity.getProblemName(),
-        activity.getEventTime()
-      )) {
-    return activity; // ignore duplicate
+  public LeetCodeActivity log(@RequestBody LeetCodeActivity activity) {
+
+    System.out.println("Received event: " + activity.getEventType() + " " + activity.getProblemName());
+
+    if (activity.getEventTime() != null &&
+        repo.existsByEventTypeAndProblemNameAndEventTime(
+                activity.getEventType(),
+                activity.getProblemName(),
+                activity.getEventTime())) {
+
+        return activity;
+    }
+
+    return repo.save(activity);
   }
-  return repo.save(activity);
-}
 }

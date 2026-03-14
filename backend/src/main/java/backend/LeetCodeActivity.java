@@ -2,7 +2,9 @@ package backend;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.time.LocalDateTime;
+
+import java.time.Instant;
+import java.time.Instant;
 
 
 @Entity
@@ -24,5 +26,5 @@ public class LeetCodeActivity {
   @Column(columnDefinition = "TEXT")
   private String problemUrl;
 
-  private LocalDateTime eventTime;
+  private Instant eventTime;
 }
