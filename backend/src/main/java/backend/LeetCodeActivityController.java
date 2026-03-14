@@ -32,7 +32,6 @@ public class LeetCodeActivityController {
 
         return activity;
     }
-
     return repo.save(activity);
   }
 }
